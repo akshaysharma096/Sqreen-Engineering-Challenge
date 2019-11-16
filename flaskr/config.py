@@ -20,3 +20,10 @@ PUBLICATION_BACKENDS = (
     'SQREEN_APP.BACKENDS.EMAIL'
 )
 
+SECURITY_HEADERS = (
+    {'header': 'X-Frame-Options', 'value': 'DENY'},
+    {'header': 'X-XSS-Protection', 'value': '1; mode=block'},
+    {'header': 'X-Content-Type-Options', 'value': 'nosniff'},
+    {'header': 'Content-Security-Policy', 'value': "default-src 'self'"},
+    {'header': "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains"}
+)
