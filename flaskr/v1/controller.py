@@ -7,10 +7,10 @@ from flaskr.utils.logging import logger
 from flaskr.utils.task_processing import task_processor
 from .decorators import validate_incoming_request
 
-call_back_server = Blueprint('admin', __name__)
+v1 = Blueprint('v1', __name__)
 
 
-@call_back_server.route('/webhook', methods=('POST','GET'))
+@v1.route('/webhook', methods=('POST', 'GET'))
 # @validate_incoming_request
 def webhook():
     logger.info("GET REQUEST")

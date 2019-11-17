@@ -6,7 +6,7 @@ from flask import Flask
 import sqreen
 from flaskr.utils.logging import logger
 from flaskr.config import SECURITY_HEADERS
-from flaskr.call_back_server.controller import call_back_server
+from flaskr.v1.controller import v1
 
 
 def create_app(test_config=None):
@@ -46,6 +46,7 @@ def create_app(test_config=None):
             response.headers[header] = value
         return response
 
-    app.register_blueprint(call_back_server, url_prefix='/v1')
+    app.register_blueprint(v1, url_prefix='/v1')
     app.debug = False
+    print(app.url_map)
     return app

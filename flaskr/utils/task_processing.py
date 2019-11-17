@@ -1,4 +1,7 @@
-from flaskr.config import PUBLICATION_BACKENDS
+# -*- coding: utf-8 -*-
+# Written by Akshay Sharma, <akshay.sharma09695@gmail.com>
+
+from flaskr.config import PUBLICATION_BACKENDS, APPLICATION_ID
 from uuid import uuid4
 import datetime
 from .logging import logger
@@ -8,6 +11,7 @@ class TaskProcessor:
 
     def __init__(self):
         self.backends = PUBLICATION_BACKENDS
+        self.application_id = APPLICATION_ID
 
     def send_to_queue(self, notifications):
         for _, notification in enumerate(notifications):
@@ -18,14 +22,18 @@ class TaskProcessor:
             msg = self._build_messsage(notification)
             logger.info(msg)
 
-
-    @staticmethod
-    def _build_messsage(notification):
+    def _build_messsage(self, notification):
         message = {
             'id': uuid4().hex,
             'sent_at': datetime.datetime.utcnow().isoformat(),
-            'notification': notification
+            'notification': notification,
+            'self': False
         }
+        if notification['application_id'] == self.application_id:
+            message['self'] = True
+            # Tagging a log with application id.
+            logger.info("[APP PROBLEM: {0}]: Message {1} shows in built app issue".format(self.application_id, message))
+
         return message
 
 

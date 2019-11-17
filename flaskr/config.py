@@ -8,8 +8,9 @@ import os
 PYTHON_VERSION = sys.version_info[0]
 
 # Setting up the backend to automatically help process task asynchronously.
-CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379')
-CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND', 'redis://localhost:6379')
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'amqp://127.0.0.1:5672')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND', 'amqp://127.0.0.1:5672')
+APPLICATION_ID = os.environ.get('SCREEN_APPLICATION_ID', None)
 
 # Tuple are immutable data-types, good for security.
 # For adding and removing backend we need to change this and our app will behave automatically
