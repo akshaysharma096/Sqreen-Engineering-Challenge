@@ -22,6 +22,7 @@ py-mini-racer==0.1.18
 pyparsing==2.4.5
 pytest==5.2.4
 pytz==2019.3
+redis==3.3.11
 requests==2.22.0
 six==1.13.0
 sq-native==0.4.4

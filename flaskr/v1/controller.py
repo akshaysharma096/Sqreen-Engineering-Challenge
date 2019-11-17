@@ -4,7 +4,7 @@
 
 from flask import Blueprint, request, jsonify
 from flaskr.utils.logging import logger
-# from flask_app.utils.task_processing import task_processor
+from flaskr.utils.task_processing import task_processor
 from .decorators import validate_incoming_request
 
 call_back_server = Blueprint('admin', __name__)
@@ -15,5 +15,5 @@ call_back_server = Blueprint('admin', __name__)
 def webhook():
     logger.info("GET REQUEST")
     notifications = request.get_json()
-    # task_processor.send_to_queue(notifications)
+    task_processor.send_to_queue(notifications)
     return jsonify({'status': 'ok'}), 200
