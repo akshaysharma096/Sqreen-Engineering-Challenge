@@ -14,7 +14,7 @@ class BackendProcessor:
         if backend not in self._supported_backends:
             return
         logger.info(
-            "[NOTIFICATION DISPATCH]: Dispatching notification: {0} to backend: {1}".format(notification, backend))
+            "[NOTIFICATION DISPATCHING]: Dispatching notification: {0} to backend: {1}".format(notification, backend))
 
 
 backends = BackendProcessor()

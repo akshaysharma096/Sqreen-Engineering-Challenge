@@ -20,8 +20,8 @@ def validate_incoming_request(f):
     def decorated_function(*args, **kwargs):
         signature = request.headers.get('X-Sqreen-Integrity', str(uuid.uuid4()))
         if not signature_verification.check_signature(signature, request.get_data()):
-            response = {'error': 'Invalid request'}
-            return jsonify(response), 403
+            response = {'error': 'You need to authenticated to access this API.'}
+            return jsonify(response), 401
         if not request.get_json():
             response = {'error': 'Unprocessable Entity'}
             return jsonify(response), 422

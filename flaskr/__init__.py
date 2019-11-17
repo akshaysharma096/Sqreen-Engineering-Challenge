@@ -29,10 +29,6 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/')
-    def hello_world():
-        return 'Hello World!'
-
     @app.after_request
     def apply_caching(response):
 
@@ -46,7 +42,7 @@ def create_app(test_config=None):
             response.headers[header] = value
         return response
 
+    # Registering V1 for our APIs.
     app.register_blueprint(v1, url_prefix='/v1')
     app.debug = False
-    print(app.url_map)
     return app

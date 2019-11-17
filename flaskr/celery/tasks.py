@@ -17,5 +17,5 @@ celery = make_celery(flask_app)
 
 @celery.task()
 def process_message(notification, backend):
-    logger.info("Inbound alert received: {0} for backend: {1}".format(notification, backend))
+    logger.info("[INBOUND ALERT RECEIVED]: {0} for backend: {1}".format(notification, backend))
     backends.send_to_backend(notification, backends)

@@ -21,6 +21,7 @@ PUBLICATION_BACKENDS = (
     'SQREEN_APP.BACKENDS.EMAIL'
 )
 
+# Can add more headers here and the app will dynamically change the headers.
 SECURITY_HEADERS = (
     {'header': 'X-Frame-Options', 'value': 'DENY'},
     {'header': 'X-XSS-Protection', 'value': '1; mode=block'},
