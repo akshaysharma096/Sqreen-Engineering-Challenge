@@ -3,6 +3,8 @@
 
 from flaskr.config import PUBLICATION_BACKENDS
 from flaskr.utils.logging import logger
+from flaskr import config
+from flaskr.backends.backend_manager import slack_manager, email_manager, sms_manager, rabbitmq_manager
 
 
 class BackendProcessor:
@@ -15,6 +17,20 @@ class BackendProcessor:
             return
         logger.info(
             "[NOTIFICATION DISPATCHING]: Dispatching notification: {0} to backend: {1}".format(notification, backend))
+
+        if backend == config.EMAIL_BACKEND:
+            email_manager.process_notification(notification)
+        elif backend == config.SMS_BACKEND:
+            sms_manager.process_notification(notification)
+        elif backend == config.RABBITMQ_BACKEND:
+            rabbitmq_manager.process_notification(notification)
+        elif backend == config.SLACK_BACKEND:
+            slack_manager.process_notification(notification)
+        else:
+            logger.info(
+                "[NOTIFICATION DISPATCHING FAILURE]: Dispatching notification failed: {0} for backend: {1}".format(
+                    notification,
+                    backend))
 
 
 backends = BackendProcessor()

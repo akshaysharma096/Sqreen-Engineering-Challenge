@@ -14,11 +14,13 @@ APPLICATION_ID = os.environ.get('SCREEN_APPLICATION_ID', None)
 
 # Tuple are immutable data-types, good for security.
 # For adding and removing backend we need to change this and our app will behave automatically
+RABBITMQ_BACKEND = 'SQREEN_APP.BACKENDS.RABBITMQ'
+SLACK_BACKEND = 'SQREEN_APP.BACKENDS.SLACK'
+SMS_BACKEND = 'SQREEN_APP.BACKENDS.SMS'
+EMAIL_BACKEND = 'SQREEN_APP.BACKENDS.EMAIL'
+
 PUBLICATION_BACKENDS = (
-    'SQREEN_APP.BACKENDS.RABBITMQ',
-    'SQREEN_APP.BACKENDS.SLACK',
-    'SQREEN_APP.BACKENDS.SMS',
-    'SQREEN_APP.BACKENDS.EMAIL'
+    RABBITMQ_BACKEND, SLACK_BACKEND, SMS_BACKEND, EMAIL_BACKEND
 )
 
 # Can add more headers here and the app will dynamically change the headers.
