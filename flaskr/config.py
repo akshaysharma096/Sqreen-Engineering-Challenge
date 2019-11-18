@@ -23,6 +23,9 @@ PUBLICATION_BACKENDS = (
     RABBITMQ_BACKEND, SLACK_BACKEND, SMS_BACKEND, EMAIL_BACKEND
 )
 
+SQREEN_SECURITY_EVENT = 'security_event'
+SQREEN_PULSE_EVENT = 'pulse'
+
 # Can add more headers here and the app will dynamically change the headers.
 SECURITY_HEADERS = (
     {'header': 'X-Frame-Options', 'value': 'DENY'},

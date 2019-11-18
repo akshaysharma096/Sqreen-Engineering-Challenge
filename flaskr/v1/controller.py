@@ -21,7 +21,6 @@ def webhook():
     :return:200 response code to the Sqreen servers.
     """
     notifications = request.get_json()
-    logger.info(notifications)
     try:
         task_processor.send_to_queue(notifications)
     except Exception as error:

@@ -15,9 +15,6 @@ class BackendProcessor:
     def send_to_backend(self, notification, backend):
         if backend not in self._supported_backends:
             return
-        logger.info(
-            "[NOTIFICATION DISPATCHING]: Dispatching notification: {0} to backend: {1}".format(notification, backend))
-
         if backend == config.EMAIL_BACKEND:
             email_manager.process_notification(notification)
         elif backend == config.SMS_BACKEND:
@@ -32,5 +29,12 @@ class BackendProcessor:
                     notification,
                     backend))
 
+    @staticmethod
+    def notify_admins(alert):
+        email_manager.notify_admins(alert)
+        sms_manager.notify_admins(alert)
+        slack_manager.notify_admins(alert)
+        email_manager.notify_admins(alert)
 
-backends = BackendProcessor()
+
+backend_processor = BackendProcessor()

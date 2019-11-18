@@ -13,10 +13,17 @@ class BackendManager(ABC):
     def process_notification(self, notification):
         pass
 
+    @abstractmethod
+    def notify_admins(self, notification):
+        pass
+
 
 class SmsManager(BackendManager):
 
     def process_notification(self, notification):
+        pass
+
+    def notify_admins(self, notification):
         pass
 
 
@@ -25,16 +32,25 @@ class SlackManager(BackendManager):
     def process_notification(self, notification):
         pass
 
+    def notify_admins(self, notification):
+        pass
+
 
 class EmailManager(BackendManager):
 
     def process_notification(self, notification):
         pass
 
+    def notify_admins(self, notification):
+        pass
+
 
 class RabbitMQManager(BackendManager):
 
     def process_notification(self, notification):
+        pass
+
+    def notify_admins(self, notification):
         pass
 
 
