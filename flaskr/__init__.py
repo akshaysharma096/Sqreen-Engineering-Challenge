@@ -43,6 +43,14 @@ def create_app(test_config=None):
         return response
 
     # Registering V1 for our APIs.
-    app.register_blueprint(v1, url_prefix='/v1')
-    app.debug = False
+    register_blueprints(app)
+    set_debugging(app)
     return app
+
+
+def register_blueprints(app):
+    app.register_blueprint(v1, url_prefix='/v1')
+
+
+def set_debugging(app):
+    app.debug = False
