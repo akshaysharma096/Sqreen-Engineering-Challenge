@@ -16,8 +16,16 @@ celery = make_celery(flask_app)
 
 logger = get_task_logger(__name__)
 
+
 @celery.task()
 def process_message(notification, backend):
+    """
+    Background Task to send a notification to a particular backend
+
+    :param notification: Web hook Notification
+    :param backend: Selected backedn to disptach to
+    :return: True, if process successfully, else False
+    """
     try:
         logger.info("[INBOUND ALERT RECEIVED]: {0} for backend: {1} \n".format(notification, backend))
         backend_processor.send_to_backend(notification, backend)
@@ -29,6 +37,12 @@ def process_message(notification, backend):
 
 @celery.task()
 def notify_internal_security_error(alert):
+    """
+       Background Task to send a notify, web admins about an INTERNAL SECURITY RISK
+
+       :param alert: Web hook Notification
+       :return: True, if processed successfully, else False
+       """
     try:
         logger.info("[INTERNAL SECURITY ALERT]: {0} \n".format(alert))
         backend_processor.notify_admins(alert)

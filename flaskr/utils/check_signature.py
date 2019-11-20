@@ -2,9 +2,10 @@
 # Written by Akshay Sharma, <akshay.sharma09695@gmail.com>
 
 
-import hmac
 import hashlib
+import hmac
 import os
+
 from flaskr.config import PYTHON_VERSION
 
 
@@ -49,11 +50,12 @@ class SqreenSignatureVerification:
 
     def check_signature(self, request_signature, request_body):
         """
+        Returns whether the signature received from the request and the signature calculated are same or not.
 
         :param request_signature: The integrity key received in the request headers
         :param request_body: Body of the request
 
-        :return: Boolean, True/False is the request valid or not.
+        :return: Boolean, True/False, signature received from the request and the signature calculated are same or not.
         """
         return self._verify_signature(request_body, request_signature)
 

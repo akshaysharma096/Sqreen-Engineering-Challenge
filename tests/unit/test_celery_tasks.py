@@ -1,15 +1,14 @@
-from tests.helpers import get_sample_publication_backend
-import json
-import uuid
+from unittest.mock import patch
 
 from flaskr.celery.tasks import process_message, notify_internal_security_error
-from unittest.mock import patch
+from tests.helpers import get_sample_publication_backend
 
 
 class TestCeleryTask:
     """
-        Class to test tasks for processing.
+        Unit tests, for tasks for processing.
     """
+
     def test_notification_processing_task(self, sample_notification):
         with patch('flaskr.config.CELERY_ALWAYS_EAGER', True, create=True):
             backend = get_sample_publication_backend()

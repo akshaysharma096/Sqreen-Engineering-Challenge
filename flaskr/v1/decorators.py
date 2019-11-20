@@ -2,10 +2,12 @@
 # Written by Akshay Sharma, <akshay.sharma09695@gmail.com>
 
 
-from flaskr.utils.check_signature import signature_verification
-from functools import wraps
 import uuid
-from flask import g, request, redirect, url_for, jsonify
+from functools import wraps
+
+from flask import request, jsonify
+
+from flaskr.utils.check_signature import signature_verification
 
 
 def validate_incoming_request(f):
@@ -22,7 +24,9 @@ def validate_incoming_request(f):
         if not signature_verification.check_signature(signature, request.get_data()):
             response = {'error': 'You need to authenticated to access this API.'}
             return jsonify(response), 401
-        if not request.get_json():
+
+        # Valid Input is an array of events.
+        if not request.get_json() or not type(request.get_json()) is list:
             response = {'error': 'Unprocessable Entity'}
             return jsonify(response), 422
         return f(*args, **kwargs)
