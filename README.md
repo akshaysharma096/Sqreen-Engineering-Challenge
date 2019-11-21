@@ -19,7 +19,7 @@ The project requires the candidate to build a flask app, that listens for webhoo
  - The project is built using Python 3.6+, pyest as the testing framework.
  
  - *We don't particularly need two apps (one to be attacked [but sqreened] & one to receive notifications) but can use the same app to do both, this has been solved by parsing the incoming notifications, if **application_id** in notification JSON represents the application which is receiving notifications, this means our server has a security issue*.
-  - If a such a scenario arises, apart from dispatching notification to the target backends, we also notify the admins of the server or application using the available backends we have like SMS, EMAIL, SLACK etc, as well also tag the logs with a tag: ***[INTENAL_SECURITY_ISSUE]***
+  - If a such a scenario arises, apart from dispatching notification to the target backends, we also notify the admins of the server or application using the available backends we have like SMS, EMAIL, SLACK etc, as well also tag the logs with a tag: ***[INTENAL SECURITY ALERT]***
     - Example: ```2019-11-21 05:24:21,308: INFO]: [INTERNAL SECURITY ALERT]: {'humanized_title': 'Massive account takeover attempts on user@example.com', 'pulse_genre': 'account_takeover', 'environment': 'production', 'date_started': '2019-11-20T21:47:00.090825+00:00', 'date_ended': None, 'blocked': True, 'url': 'https://my.sqreen.com/application/5dd058775c3feb0021c0bb43/pulses/5dd5b454e56c7e0024169b4b'} ```
  
  - I have used to celery to process notifications dispatch to different backends, because the code has been written by keeping in mind I am actually building an app for production ready use. RabbitMQ has been used the broker for Celery. Each component can be scaled separately.
