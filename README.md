@@ -3,9 +3,14 @@
   <img src="https://warehouse-camo.cmh1.psfhosted.org/ff0cff6b90e14dae12ba8f267acc4694632db0cf/68747470733a2f2f73717265656e2d6173736574732e73332d65752d776573742d312e616d617a6f6e6177732e636f6d2f6c6f676f732f73717265656e2d6c6f676f2d3236342d312e737667"><br><br>
 </div>
 
-### What is this repository for? ###
+### What is this repository for? / Scenario ###
 
 This repository showcases the solution to the coding challenege given by [Sqreen](https://www.sqreen.com/) to me as a part of the interview process.
+
+- On receiving a notification the application should
+    - Check that the signature is correct.
+    - Redispatch the notification to multiple targets (e.g. log, email, HTTP, SMS, Slack).
+    
 
 ### Project Details ###
 
@@ -32,3 +37,9 @@ The project requires the candidate to build a flask app, that listens for webhoo
  
  - As per the implementation details of the target backends, i.e: how will the notifcation will be send to backends like: SMS, SLACK or EMAIL, each backend has a specific ***{Backend}Manager*** class. The implementation of sending notification to a specific Backend has not been implemented but a basic code structure has been done, as it was in the scope of the task. 
  
+ 
+ 
+### Assuptions ###
+
+- 
+
