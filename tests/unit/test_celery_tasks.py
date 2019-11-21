@@ -1,5 +1,7 @@
-from unittest.mock import patch
+# -*- coding: utf-8 -*-
+# Written by Akshay Sharma, <akshay.sharma09695@gmail.com>
 
+from unittest.mock import patch
 from flaskr.celery.tasks import process_message, notify_internal_security_error
 from tests.helpers import get_sample_publication_backend
 
