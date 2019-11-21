@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
+# Written by Akshay Sharma, <akshay.sharma09695@gmail.com>
+
 import json
 from uuid import uuid4
-
 import pytest
-
 from flaskr.utils.check_signature import signature_verification
 from flaskr.utils.crypt import sign_request
 

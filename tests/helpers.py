@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Written by Akshay Sharma, <akshay.sharma09695@gmail.com>
+
 from flaskr.config import SLACK_BACKEND
 
 

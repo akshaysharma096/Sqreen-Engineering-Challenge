@@ -1,8 +1,10 @@
-import pytest
-import uuid
+# -*- coding: utf-8 -*-
+# Written by Akshay Sharma, <akshay.sharma09695@gmail.com>
+
 import datetime
+import uuid
+import pytest
 from flaskr import create_app
-from flaskr.celery_config import make_celery
 
 
 @pytest.fixture(scope="module")
