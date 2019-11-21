@@ -26,9 +26,9 @@ The project requires the candidate to build a flask app, that listens for webhoo
  
  - **flaskr** is the project directory which contains the application code for our server.
  
- - **flaskr/tests** is the project directory which contains the tests.
+ - **tests** is the project directory which contains the tests.
  
- - **flaskr/tests/conftest.py** contains the required fixtures for our tests.
+ - **tests/conftest.py** contains the required fixtures for our tests.
  
  - **flaskr/utils** module contains helper classes used to for verifying the signature of an incoming request and processing and dispatching the incoming notifciation to target backends.
  
