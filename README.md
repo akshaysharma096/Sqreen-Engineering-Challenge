@@ -78,8 +78,9 @@ The project requires the candidate to build a flask app, that listens for webhoo
    - ```$ celery -A flaskr.celery.tasks worker --loglevel=info -f logs/celery.log```
   -  Logs will be stored in ```logs/celery.log```
 
+
 - To run tests.
- - Once all above steps are completed.
- - ```$ pyest```
+  - Once all above steps are completed.
+  - ```$ pyest```
 
 
